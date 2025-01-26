@@ -1,21 +1,22 @@
-import { useState } from 'react';
-import './App.css';
-import WordCarousel from './components/WordCarousel';
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Menu from './components/Menu';
+import Home from './pages/Home';
+import Cards from './pages/Cards';
 
-function App() {
-  const words = [
-    { word: 'Hello', translation: 'Привет' },
-    { word: 'World', translation: 'Мир' },
-    { word: 'React', translation: 'Реакт' },
-    { word: 'Carousel', translation: 'Карусель' }
-  ];
-
-  return (
-    <div className="App" style={{ fontFamily: 'Arial, sans-serif', textAlign: 'center', marginTop: '50px' }}>
-      <h1>Vocabulary</h1>
-      <WordCarousel words={words} />
-    </div>
-  );
-}
+const App = () => {
+    return (
+        <Router>
+            <Menu />
+            <div style={{ marginTop: '4rem' }}>
+                <Routes>
+                    <Route path="/" element={<Home />} />
+                    <Route path="/cards" element={<Cards />} />
+                </Routes>
+            </div>
+        </Router>
+    );
+};
 
 export default App;
+
